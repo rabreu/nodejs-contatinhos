@@ -31,8 +31,11 @@ const getById = (request, response) => {
     const id = request.params.id
     contatoCollection.findById(id, (error, contato) => {
         if(error)
-            return response.status(404).send({"mensagem": "Contatinho não existe. :("})
-        return response.status(200).send(contato)
+            return response.status(500).send(error)
+        if(contato.length > 0)
+            return response.status(200).send(contato)
+        return response.status(404).send({"mensagem": "Contatinho não existe. :("})
+
     })
 }
 
