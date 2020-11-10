@@ -85,6 +85,7 @@ const updateContato = (request, response) => {
     console.log(`${request.method} ${request.url}`)
     const id = request.params.id
     const bodyContato = request.body
+    delete bodyContato["_id"]
     contatoCollection.findByIdAndUpdate(id, bodyContato, { "new": true }, (error, contato) => {
         if(error)
             return response.status(500).send(error)
