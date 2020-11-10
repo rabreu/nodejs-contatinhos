@@ -1,4 +1,5 @@
 const { response } = require("express")
+const { find } = require("../models/contatoSchema")
 const contatoCollection = require("../models/contatoSchema")
 
 const getAll = (request, response) => {
@@ -32,10 +33,9 @@ const getById = (request, response) => {
     contatoCollection.findById(id, (error, contato) => {
         if(error)
             return response.status(500).send(error)
-        if(contato.length > 0)
-            return response.status(200).send(contato)
-        return response.status(404).send({"mensagem": "Contatinho não existe. :("})
-
+        if(contato.length < 1)
+            return response.status(404).send({"mensagem": "Contatinho não existe. :("})
+        return response.status(200).send(contato)
     })
 }
 
@@ -46,17 +46,20 @@ const getByNome = (request, response) => {
         console.log(contato)
         if(error)
             return response.status(500).send(error)
-        if (contato.length > 0) 
-            return response.status(200).send(contato)
-        return response.status(404).send({"mensagem": "Contatinho não existe. :("})
+        if(contato.length < 1)
+            return response.status(404).send({"mensagem": "Contatinho não existe. :("})
+        return response.status(200).send(contato)
     })
 }
 
 const deleteContato = (request, response) => {
+    console.log(`${request.method} ${request.url}`)
     const id = request.params.id
     contatoCollection.findByIdAndDelete(id, (error) => {
         if(error)
             return response.status(500).send(error)
+        if(contato.length < 1)
+            return response.status(404).send({"mensagem": "Contatinho não existe. :("})
         return response.status(200).send({
             "mensagem": "Bye bye, ex-contatinho!"
         })
@@ -65,11 +68,30 @@ const deleteContato = (request, response) => {
 }
 
 const updateTelefoneContato = (request, response) => {
-    
+    console.log(`${request.method} ${request.url}`)
+    const id = request.params.id
+    const celular = request.body.celular
+
+    contatoCollection.findByIdAndUpdate(id, { "celular": celular }, (error, contato) => {
+        if(error)
+            return response.status(500).send(error)
+        if(contato.length < 1)
+            return response.status(404).send({"mensagem": "Contatinho não existe. :("})
+        return response.status(200).send(contato)
+    })
 }
 
 const updateContato = (request, response) => {
-    
+    console.log(`${request.method} ${request.url}`)
+    const id = request.params.id
+    const bodyContato = request.body
+    contatoCollection.findByIdAndUpdate(id, bodyContato, { "new": true }, (error, contato) => {
+        if(error)
+            return response.status(500).send(error)
+        if(contato.length < 1)
+            return response.status(404).send({"mensagem": "Contatinho não existe. :("})
+        return response.status(200).send(contato)
+    })
 }
 
 module.exports = { 
