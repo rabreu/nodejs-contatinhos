@@ -52,9 +52,32 @@ const getByNome = (request, response) => {
     })
 }
 
+const deleteContato = (request, response) => {
+    const id = request.params.id
+    contatoCollection.findByIdAndDelete(id, (error) => {
+        if(error)
+            return response.status(500).send(error)
+        return response.status(200).send({
+            "mensagem": "Bye bye, ex-contatinho!"
+        })
+    })
+
+}
+
+const updateTelefoneContato = (request, response) => {
+    
+}
+
+const updateContato = (request, response) => {
+    
+}
+
 module.exports = { 
     getAll,
     addContato,
     getById,
-    getByNome
+    getByNome,
+    deleteContato,
+    updateTelefoneContato,
+    updateContato
 }
