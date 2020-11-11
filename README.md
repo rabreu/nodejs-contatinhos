@@ -41,3 +41,7 @@ Desafio da semana 14 do curso de backend da [{reprograma}](https://github.com/re
 ```
 
 ![Arquitetura](./img/api.png)
+
+## Iniciar API
+
+`npm install && npm start`
