@@ -25,7 +25,7 @@ Desafio da semana 14 do curso de backend da [{reprograma}](https://github.com/re
 		|   package.json
 		|   server.js
 		\--📂 node_modules
-		\--📂src
+		\--📂 src
 		    |   app.js
 		    |
 		    📂---controllers
