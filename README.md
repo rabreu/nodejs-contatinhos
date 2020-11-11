@@ -33,11 +33,11 @@ Desafio da semana 14 do curso de backend da [{reprograma}](https://github.com/re
 		    |
 		    📂---model
 		    |       contatoSchema.js
-			|       repository.js
+		    |	    repository.js
 		    |
 		    📂---routes
 		            contatosRoute.js
-					index.js
+			    index.js
 ```
 
 ![Arquitetura](./img/api.png)
