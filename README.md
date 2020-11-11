@@ -20,24 +20,24 @@ Desafio da semana 14 do curso de backend da [{reprograma}](https://github.com/re
 
 ```bash
 \--📂 nodejs-contatinhos
-		|   .gitignore
-		|   package-lock.json
-		|   package.json
-		|   server.js
-		\--📂 node_modules
-		\--📂 src
-		    |   app.js
-		    |
-		    📂---controllers
-		    |       contatosController.js
-		    |
-		    📂---model
-		    |       contatoSchema.js
-		    |	    repository.js
-		    |
-		    📂---routes
-		            contatosRoute.js
-			    index.js
+    |   .gitignore
+    |   package-lock.json
+    |   package.json
+    |   server.js
+    \--📂 node_modules
+    \--📂 src
+	|   app.js
+	|
+	📂---controllers
+	 |       contatosController.js
+	 |
+	📂---model
+	 |       contatoSchema.js
+	 |	 repository.js
+	 |
+	📂---routes
+		 contatosRoute.js
+		 index.js
 ```
 
 ![Arquitetura](./img/api.png)
