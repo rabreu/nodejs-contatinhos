@@ -15,7 +15,7 @@ const addContato = (request, response) => {
     console.log(`${request.method} ${request.url}`)
     const contatoBody = request.body
     const contato = new contatoCollection(contatoBody)
-    contato.save((error) => {
+    contato.save((error, contato) => {
         if(error)
             switch(error.code) {
                 case 11000:
@@ -23,7 +23,10 @@ const addContato = (request, response) => {
                 default:
                     return response.status(400).send(error)
             }
-        return response.status(201).send({"mensagem": "Contatinho criado. :D"})
+        return response.status(201).send({
+            mensagem: "Contatinho criado. :D",
+            contato
+        })
     })
 }
 
@@ -77,7 +80,10 @@ const updateTelefoneContato = (request, response) => {
             return response.status(500).send(error)
         if(contato.length < 1)
             return response.status(404).send({"mensagem": "Contatinho não existe. :("})
-        return response.status(200).send(contato)
+        return response.status(200).send({
+            mensagem: "Telefone do contatinho atualizado. :D",
+            contato
+        })
     })
 }
 
@@ -91,7 +97,10 @@ const updateContato = (request, response) => {
             return response.status(500).send(error)
         if(contato.length < 1)
             return response.status(404).send({"mensagem": "Contatinho não existe. :("})
-        return response.status(200).send(contato)
+        return response.status(200).send({
+            mensagem: "Contatinho atualizado. :D",
+            contato
+        })
     })
 }
 
