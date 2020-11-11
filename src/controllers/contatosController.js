@@ -12,7 +12,7 @@ const getAll = (request, response) => {
 }
 
 const addContato = (request, response) => {
-    console.log(`${request.method} ${request.url}`)
+    console.log(`${request.method} /contatos${request.url}`)
     const contatoBody = request.body
     const contato = new contatoCollection(contatoBody)
     contato.save((error, contato) => {
@@ -31,7 +31,7 @@ const addContato = (request, response) => {
 }
 
 const getById = (request, response) => {
-    console.log(`${request.method} ${request.url}`)
+    console.log(`${request.method} /contatos${request.url}`)
     const id = request.params.id
     contatoCollection.findById(id, (error, contato) => {
         if(error)
@@ -43,7 +43,7 @@ const getById = (request, response) => {
 }
 
 const getByNome = (request, response) => {
-    console.log(`${request.method} ${request.url}`)
+    console.log(`${request.method} /contatos${request.url}`)
     const nome = request.params.nome
     contatoCollection.find({ "nome": nome }, (error, contato) => {
         console.log(contato)
@@ -56,7 +56,7 @@ const getByNome = (request, response) => {
 }
 
 const deleteContato = (request, response) => {
-    console.log(`${request.method} ${request.url}`)
+    console.log(`${request.method} /contatos${request.url}`)
     const id = request.params.id
     contatoCollection.findByIdAndDelete(id, (error) => {
         if(error)
@@ -71,7 +71,7 @@ const deleteContato = (request, response) => {
 }
 
 const updateTelefoneContato = (request, response) => {
-    console.log(`${request.method} ${request.url}`)
+    console.log(`${request.method} /contatos${request.url}`)
     const id = request.params.id
     const celular = request.body.celular
 
@@ -88,7 +88,7 @@ const updateTelefoneContato = (request, response) => {
 }
 
 const updateContato = (request, response) => {
-    console.log(`${request.method} ${request.url}`)
+    console.log(`${request.method} /contatos${request.url}`)
     const id = request.params.id
     const bodyContato = request.body
     delete bodyContato["_id"]
